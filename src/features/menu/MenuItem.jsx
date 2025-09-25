@@ -12,7 +12,7 @@ function MenuItem({ pizza }) {
         alt={name}
         className={`h-24 ${soldOut ? 'opacity-70 grayscale' : ''}`}
       />
-      <div className="flex grow flex-col">
+      <div className="flex grow flex-col pt-0.5">
         <p className="font-semibold uppercase text-stone-950">{name}</p>
         <p className="capitalize italic">{ingredients.join(', ')}</p>
         <div className="mt-auto flex items-center justify-between">
