@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
 
 function MenuItem({ pizza }) {
@@ -11,10 +12,10 @@ function MenuItem({ pizza }) {
         alt={name}
         className={`h-24 ${soldOut ? 'opacity-70 grayscale' : ''}`}
       />
-      <div className="flex flex-col">
+      <div className="flex grow flex-col">
         <p className="font-semibold uppercase text-stone-950">{name}</p>
-        <p>{ingredients.join(', ')}</p>
-        <div className="mt-auto">
+        <p className="capitalize italic">{ingredients.join(', ')}</p>
+        <div className="mt-auto flex items-center justify-between">
           {!soldOut ? (
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
@@ -22,6 +23,8 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
+
+          <Button type="small">Add to Cart</Button>
         </div>
       </div>
     </li>
