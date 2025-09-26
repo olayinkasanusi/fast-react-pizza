@@ -9,7 +9,7 @@ function CartItem({ item }) {
 
   const { pizzaId, name, quantity, totalPrice } = item;
 
-  function deleteCartItem() {
+  function handleDeleteItem() {
     dispatch(deleteItem(pizzaId));
   }
 
@@ -20,7 +20,7 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center justify-between sm:space-x-6">
         <p className="text-sm font-bold">{formatCurrency(totalPrice)}</p>
-        <Button type="small" onClick={deleteCartItem}>
+        <Button type="small" onClick={handleDeleteItem}>
           Delete
         </Button>
       </div>

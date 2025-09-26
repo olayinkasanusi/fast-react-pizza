@@ -39,7 +39,7 @@ function Cart() {
         </>
       ) : (
         <div className="mx-auto my-8 flex w-full flex-col items-center justify-between gap-4">
-          <h1 className="text-center text-4xl font-bold text-stone-800">
+          <h1 className="text-center text-2xl font-bold text-stone-800">
             Add Items to Cart
           </h1>
           <p className="text-lg font-semibold text-stone-700">
