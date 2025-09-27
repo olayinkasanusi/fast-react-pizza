@@ -1,17 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import { useDispatch } from 'react-redux';
 import { formatCurrency } from '../../utils/helpers';
 import DeleteItem from './DeleteItem';
-import { deleteItem } from './cartSlice';
+
 import UpdateItemQuantity from './UpdateItemQuantity';
 
 function CartItem({ item }) {
-  const dispatch = useDispatch();
-
-  function handleDeleteItem() {
-    dispatch(deleteItem(pizzaId));
-  }
   const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
@@ -21,9 +15,9 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center justify-between sm:space-x-6">
         <p className="text-sm font-bold">{formatCurrency(totalPrice)}</p>
-        <UpdateItemQuantity pizzaId={pizzaId} />
+        <UpdateItemQuantity pizzaId={pizzaId} quantity={quantity} />
 
-        <DeleteItem onClick={handleDeleteItem}>Delete</DeleteItem>
+        <DeleteItem pizzaId={pizzaId}>Delete</DeleteItem>
       </div>
     </li>
   );
