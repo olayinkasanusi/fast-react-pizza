@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
+
 import { useDispatch } from 'react-redux';
-import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
+import DeleteItem from './DeleteItem';
 import { deleteItem } from './cartSlice';
+import UpdateItemQuantity from './UpdateItemQuantity';
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
 
-  const { pizzaId, name, quantity, totalPrice } = item;
-
   function handleDeleteItem() {
     dispatch(deleteItem(pizzaId));
   }
+  const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
     <li className="py-3 sm:flex sm:items-center sm:justify-between">
@@ -20,9 +21,9 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center justify-between sm:space-x-6">
         <p className="text-sm font-bold">{formatCurrency(totalPrice)}</p>
-        <Button type="small" onClick={handleDeleteItem}>
-          Delete
-        </Button>
+        <UpdateItemQuantity pizzaId={pizzaId} />
+
+        <DeleteItem onClick={handleDeleteItem}>Delete</DeleteItem>
       </div>
     </li>
   );

@@ -2,12 +2,14 @@
 import { useDispatch } from 'react-redux';
 import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
-import { addItem } from '../cart/cartSlice';
+import { addItem, deleteItem } from '../cart/cartSlice';
+import { useState } from 'react';
+import DeleteItem from '../cart/DeleteItem';
 
 function MenuItem({ pizza }) {
-  const { name, unitPrice, ingredients, soldOut, imageUrl, id } = pizza;
-
   const dispatch = useDispatch();
+  const [addedToCart, setAddedToCart] = useState(false);
+  const { name, unitPrice, ingredients, soldOut, imageUrl, id } = pizza;
 
   function handleAddToCart() {
     const newItem = {
@@ -18,6 +20,12 @@ function MenuItem({ pizza }) {
       totalPrice: unitPrice * 1,
     };
     dispatch(addItem(newItem));
+    setAddedToCart(!addedToCart);
+  }
+
+  function removeFromCart() {
+    dispatch(deleteItem(id));
+    setAddedToCart(!addedToCart);
   }
 
   return (
@@ -39,9 +47,13 @@ function MenuItem({ pizza }) {
             </p>
           )}
 
-          <Button type="small" disabled={soldOut} onClick={handleAddToCart}>
-            {soldOut ? 'Sold Out' : 'Add to cart'}
-          </Button>
+          {addedToCart ? (
+            <DeleteItem onClick={removeFromCart}>Remove from Cart</DeleteItem>
+          ) : (
+            <Button type="small" disabled={soldOut} onClick={handleAddToCart}>
+              {soldOut ? 'Sold Out' : 'Add to cart'}
+            </Button>
+          )}
         </div>
       </div>
     </li>
