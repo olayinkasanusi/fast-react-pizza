@@ -8,7 +8,6 @@ function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const username = useSelector((state) => state.user.username);
-  console.log(cart);
 
   function clearCarts() {
     dispatch(clearCart());
