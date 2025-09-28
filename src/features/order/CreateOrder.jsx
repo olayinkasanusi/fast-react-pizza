@@ -48,7 +48,7 @@ function CreateOrder() {
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Phone number</label>
-          <div className="grow">
+          {/* <div className="grow">
             <input
               type="tel"
               name="phone"
@@ -61,7 +61,7 @@ function CreateOrder() {
               </p>
             )}
           </div>
-        </div>
+        </div> */}
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
